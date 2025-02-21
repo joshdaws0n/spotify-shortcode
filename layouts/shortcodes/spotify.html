@@ -2,15 +2,16 @@
 {{- $width := .Get "width" | default "100%" -}}
 {{- $heightType := "compact" -}}
 {{- $heightType = or $.Site.Params.spotify_embed_height $heightType -}}
-{{- $colourTheme := 0 }} 
+{{- $colourTheme := 0 -}} 
 {{ if $.Site.Params.spotify_embed_theme }}
-  {{- $colourTheme = 1 }} 
+  {{- $colourTheme = 1 -}} 
 {{ end }}
 {{- $marginTop := 0 -}}
 {{- $marginTop = or $.Site.Params.spotify_embed_margin_top $marginTop -}}
 {{- $marginBottom := 0 -}}
 {{- $marginBottom = or $.Site.Params.spotify_embed_margin_bottom $marginBottom -}}
 
+{{- $themeParam := "" -}}
 {{- if not $colourTheme -}}
   {{- $themeParam = "?theme=0" -}}
 {{- end -}}

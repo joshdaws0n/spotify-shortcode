@@ -1,0 +1,27 @@
+{
+  "version": "0.1.0",
+  "title": "Spotify Embed Shortcode",
+  "description": "Embed tracks and albums from Spotify with ease",
+  "fields": [
+    {
+      "field": "params.spotify_embed_margin_top",
+      "label": "Top Margin (rem)",
+      "placeholder": "0.5"
+    },
+    {
+      "field": "params.spotify_embed_margin_bottom",
+      "label": "Bottom Margin (rem)",
+      "placeholder": "0.5"
+    },
+    {
+      "field": "params.spotify_embed_height",
+      "label": "Height (tall or compact)",
+      "placeholder": "compact"
+    },
+    {
+      "field": "params.spotify_embed_theme",
+      "label": "Use colourful theme",
+      "type": "boolean"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{{- $url := .Get "url" -}}
+{{- $width := .Get "width" | default "100%" -}}
+{{- $heightType := "compact" -}}
+{{- $heightType = or $.Site.Params.spotify_embed_height $heightType -}}
+{{- $colourTheme := 0 }} 
+{{ if $.Site.Params.spotify_embed_theme }}
+  {{- $colourTheme = 1 }} 
+{{ end }}
+{{- $marginTop := 0 -}}
+{{- $marginTop = or $.Site.Params.spotify_embed_margin_top $marginTop -}}
+{{- $marginBottom := 0 -}}
+{{- $marginBottom = or $.Site.Params.spotify_embed_margin_bottom $marginBottom -}}
+
+{{- if not $colourTheme -}}
+  {{- $themeParam = "?theme=0" -}}
+{{- end -}}
+
+{{- $type := replaceRE "^https://open\\.spotify\\.com/([^/]+)/.*" "$1" $url -}}
+{{- $id := replaceRE "^https://open\\.spotify\\.com/[^/]+/([^?]+).*" "$1" $url -}}
+
+{{- $height := "152" -}}
+{{- if eq $heightType "tall" -}}
+  {{- $height = "352" -}}
+{{- end -}}
+
+{{- $marginStyles := "" -}}
+{{- if $marginTop -}}
+  {{- $marginStyles = printf "margin-top: %srem;" $marginTop -}}
+{{- end -}}
+{{- if $marginBottom -}}
+  {{- $marginStyles = printf "%s margin-bottom: %srem;" $marginStyles $marginBottom -}}
+{{- end -}}
+
+{{- $embedUrl := printf "https://open.spotify.com/embed/%s/%s%s" $type $id $themeParam -}}
+
+<iframe 
+    style="border-radius:12px; {{ $marginStyles | safeCSS }}" 
+    src="{{ $embedUrl }}" 
+    width="{{ $width }}" 
+    height="{{ $height }}" 
+    frameborder="0" 
+    allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>

@@ -34,12 +34,4 @@
 
 {{- $embedUrl := printf "https://open.spotify.com/embed/%s/%s%s" $type $id $themeParam -}}
 
-<iframe 
-    style="border-radius:12px; {{ $marginStyles | safeCSS }}" 
-    src="{{ $embedUrl }}" 
-    width="{{ $width }}" 
-    height="{{ $height }}" 
-    frameborder="0" 
-    allowfullscreen="" 
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-</iframe>
+<iframe style="border-radius:12px; {{ $marginStyles | safeCSS }}" src="{{ $embedUrl }}" width="{{ $width }}" height="{{ $height }}" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>

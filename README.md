@@ -24,6 +24,8 @@ To embed a Spotify track or album, simply use the Spotify share sheet to select 
 {{< spotify url="https://open.spotify.com/track/5vdEuDGGG5PuyHwN6xtc6W?si=0316b808513942d6" >}}
 ```
 
+Note: You don't need to remove any additional queries that spotify appends to the URL like in the example above. The plugin will strip them for you.
+
 You can also override the default configuration by passing additional parameters:
 
 - `url`: The Spotify URL of the track or album (required).

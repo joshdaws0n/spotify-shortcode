@@ -6,10 +6,8 @@
 {{ if $.Site.Params.spotify_embed_theme }}
   {{- $colourTheme = 1 -}} 
 {{ end }}
-{{- $marginTop := 0 -}}
-{{- $marginTop = or $.Site.Params.spotify_embed_margin_top $marginTop -}}
-{{- $marginBottom := 0 -}}
-{{- $marginBottom = or $.Site.Params.spotify_embed_margin_bottom $marginBottom -}}
+{{- $marginTop := .Get "margin-top" -}}
+{{- $marginBottom := .Get "margin-bottom" -}}
 
 {{- $themeParam := "" -}}
 {{- if not $colourTheme -}}
@@ -23,6 +21,11 @@
 {{- if eq $heightType "tall" -}}
   {{- $height = "352" -}}
 {{- end -}}
+
+{{- $defaultMarginTop := $.Site.Params.spotify_embed_margin_top | default "0" -}}
+{{- $defaultMarginBottom := $.Site.Params.spotify_embed_margin_bottom | default "0" -}}
+{{- $marginTop = or $marginTop $defaultMarginTop -}}
+{{- $marginBottom = or $marginBottom $defaultMarginBottom -}}
 
 {{- $marginStyles := "" -}}
 {{- if $marginTop -}}
